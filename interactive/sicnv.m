@@ -1,5 +1,6 @@
 function num_ans = sicnv(x1, x2, t, tau_lim, Ns, p)
   
+  # sicnv (slow interactive convolution)
   # x1, x2: anonymous functions to convolve (x2 is flipped)
   # t: t value to test
   # tau_lim: a two-element vector representing the minimum and maximum range of the convolution

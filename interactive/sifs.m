@@ -1,10 +1,11 @@
-function Ck = fourier(x,t,Nk,p)
+function Ck = sifs(x, t, Nk, p)
   
-  # Ck = exponential fourier series cofficient  
-  # x = single period of a signal
-  # t = time corrosponding to x
-  # Nk = (optional input) number of exponential terms
-  # p = plot if true
+  # sifs (slow interactive fourier series)
+  # x: a vector representing a single period of a signal
+  # t: time scale corresponding to x
+  # Nk: number of exponential terms (optional, defaults to 101)
+  # p: plot if true (optional, defaults to false)
+  # fourier returns Ck, which is a vector of Nk exponential fourier series cofficients
   
   dT = t(2) - t(1);
   T = dT * length(t)
@@ -22,6 +23,10 @@ function Ck = fourier(x,t,Nk,p)
   else
     # nothing needs to be done
   end
+  
+  if Nk > length(x)
+    warning("More Fourier Series coefficients than input data points.  Aliasing may occur.")
+  endif
   
   # if Nk is 5, k goes from -2 to 2
   min_k = -floor(Nk / 2);
